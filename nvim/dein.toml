@@ -1,0 +1,10 @@
+
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'Shougo/defx.nvim'
+
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+
