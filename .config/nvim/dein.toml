@@ -121,17 +121,18 @@ defx = '''
 [[plugins]]
 repo = 'Shougo/denite.nvim'
 on_cmd = 'Denite'
-hook_source = '''
-  execute 'source' fnamemodify(expand('$MYVIMRC'), ':h').'/rc/plugins/denite.rc.vim'
-'''
 
-  # nnoremap <silent><expr> / wordcount().chars > 30000 ?
-  # \ "\<Cmd>Denite -buffer-name=search -start-filter
-  # \  -search line/external\<CR>" :
-  # \ "\<Cmd>Denite -buffer-name=search -start-filter -search line\<CR>"
-  # nnoremap <silent><expr> * wordcount().chars > 30000 ?
-  # \ "\<Cmd>DeniteCursorWord -buffer-name=search -search line/external\<CR>" :
-  # \ "\<Cmd>DeniteCursorWord -buffer-name=search -search line\<CR>"
+# hook_source = '''
+#   execute 'source' fnamemodify(expand('$MYVIMRC'), ':h').'/rc/plugins/denite.rc.vim'
+# '''
+
+# nnoremap <silent><expr> / wordcount().chars > 30000 ?
+# \ "\<Cmd>Denite -buffer-name=search -start-filter
+# \  -search line/external\<CR>" :
+# \ "\<Cmd>Denite -buffer-name=search -start-filter -search line\<CR>"
+# nnoremap <silent><expr> * wordcount().chars > 30000 ?
+# \ "\<Cmd>DeniteCursorWord -buffer-name=search -search line/external\<CR>" :
+# \ "\<Cmd>DeniteCursorWord -buffer-name=search -search line\<CR>"
 
 hook_add = '''
   nnoremap <silent> ;r
@@ -140,33 +141,24 @@ hook_add = '''
         \ <Cmd>Denite -default-action=replace -buffer-name=register
         \ register<CR>
 
-  nnoremap <silent> s<Space>
-  \ <Cmd>Denite -buffer-name=files
-  \  file/rec:'`fnamemodify(expand('$MYVIMRC'), ':h').'/rc'`'<CR>
-  xnoremap <silent> *
-  \ "qy:Denite -input=`@q` -buffer-name=search -search line<CR>
+  xnoremap <silent> * "qy:Denite -input=`@q` -buffer-name=search -search line<CR>
   nnoremap <silent><expr> ss finddir('.git', ';') != '' ?
   \ "\<Cmd>Denite -sorters=sorter/rank -unique -buffer-name=files
   \  file/point file/old file/dirty file/git file file:new\<CR>" :
   \ "\<Cmd>Denite -sorters=sorter/rank -unique -buffer-name=files
   \  file/point file/old file file:new\<CR>"
-  nnoremap <silent> n
-  \ <Cmd>Denite -buffer-name=search -resume<CR>
-  nnoremap <silent> sf
-  \ <Cmd>Denite -buffer-name=files -resume<CR>
 
-  nnoremap <silent><expr> tt  &filetype == 'help' ?  "g\<C-]>" :
-  \ "\<Cmd>DeniteCursorWord -buffer-name=tag -immediately tag:include\<CR>"
-  nnoremap <silent><expr> tp  &filetype == 'help' ?
-  \ "\<Cmd>pop\<CR>" : "\<Cmd>Denite jump\<CR>"
+  nnoremap <silent><expr> tt  &filetype == 'help' ? "g\<C-]>" : "\<Cmd>DeniteCursorWord -buffer-name=tag -immediately tag:include\<CR>"
+  nnoremap <silent><expr> tp  &filetype == 'help' ? "\<Cmd>pop\<CR>" : "\<Cmd>Denite jump\<CR>"
 
-  nnoremap <silent> sn <Cmd>Denite dein<CR>
-  nnoremap <silent> sg <Cmd>Denite ghq -default-action=cd<CR>
-  nnoremap <silent> ;g <Cmd>Denite -buffer-name=search
-  \ -no-empty grep<CR>
-  nnoremap <silent> ;w <Cmd>DeniteCursorWord -buffer-name=search
-  \ -no-empty grep<CR>
-  nnoremap <silent> <C-t> <Cmd>Denite -buffer-name=deol
+  nnoremap <silent> s<Space> <Cmd>Denite -buffer-name=files  file/rec:'`fnamemodify(expand('$MYVIMRC'), ':h').'/rc'`'<CR>
+  nnoremap <silent> n        <Cmd>Denite -buffer-name=search -resume<CR>
+  nnoremap <silent> sf       <Cmd>Denite -buffer-name=files -resume<CR>
+  nnoremap <silent> sn       <Cmd>Denite dein<CR>
+  nnoremap <silent> sg       <Cmd>Denite ghq -default-action=cd<CR>
+  nnoremap <silent> ;g       <Cmd>Denite -buffer-name=search -no-empty grep<CR>
+  nnoremap <silent> ;w       <Cmd>DeniteCursorWord -buffer-name=search -no-empty grep<CR>
+  nnoremap <silent> <C-t>    <Cmd>Denite -buffer-name=deol
   \ -split=`has('nvim') ? 'floating' : 'horizontal'`
   \ -cursor-pos=`tabpagenr()-1` deol:zsh<CR>
   nnoremap <silent> <C-k> <Cmd>Denite change jump<CR>
@@ -175,34 +167,20 @@ hook_add = '''
 [plugins.ftplugin]
 denite = '''
   " Define mappings
-  nnoremap <silent><buffer><expr> <CR>
-  \ denite#do_map('do_action')
-  nnoremap <silent><buffer><expr> a
-  \ denite#do_map('choose_action')
-  nnoremap <silent><buffer><expr> d
-  \ denite#do_map('do_action', 'delete')
-  nnoremap <silent><buffer><expr> e
-  \ denite#do_map('do_action', 'edit')
-  nnoremap <silent><buffer><expr> p
-  \ denite#do_map('do_action', 'preview')
-  nnoremap <silent><buffer><expr> P
-  \ denite#do_map('do_action', 'preview_bat')
-  nnoremap <silent><buffer><expr> N
-  \ denite#do_map('do_action', 'new')
-  nnoremap <silent><buffer><expr> q
-  \ denite#do_map('quit')
-  nnoremap <silent><buffer><expr> '
-  \ denite#do_map('quick_move')
-  nnoremap <silent><buffer><expr> i
-  \ denite#do_map('open_filter_buffer')
-  nnoremap <silent><buffer><expr> <Space>
-  \ denite#do_map('toggle_select').'j'
-  nnoremap <silent><buffer><expr> r
-  \ denite#do_map('do_action', 'quickfix')
-  nnoremap <silent><buffer><expr> <C-r>
-  \ denite#do_map('restore_sources')
-  nnoremap <silent><buffer><expr> <C-l>
-  \ denite#do_map('redraw')
+  nnoremap <silent><buffer><expr> <CR>    denite#do_map('do_action')
+  nnoremap <silent><buffer><expr> a       denite#do_map('choose_action')
+  nnoremap <silent><buffer><expr> d       denite#do_map('do_action', 'delete')
+  nnoremap <silent><buffer><expr> e       denite#do_map('do_action', 'edit')
+  nnoremap <silent><buffer><expr> p       denite#do_map('do_action', 'preview')
+  nnoremap <silent><buffer><expr> P       denite#do_map('do_action', 'preview_bat')
+  nnoremap <silent><buffer><expr> N       denite#do_map('do_action', 'new')
+  nnoremap <silent><buffer><expr> q       denite#do_map('quit')
+  nnoremap <silent><buffer><expr> '       denite#do_map('quick_move')
+  nnoremap <silent><buffer><expr> i       denite#do_map('open_filter_buffer')
+  nnoremap <silent><buffer><expr> <Space> denite#do_map('toggle_select').'j'
+  nnoremap <silent><buffer><expr> r       denite#do_map('do_action', 'quickfix')
+  nnoremap <silent><buffer><expr> <C-r>   denite#do_map('restore_sources')
+  nnoremap <silent><buffer><expr> <C-l>   denite#do_map('redraw')
 '''
 
 [[plugins]]
