@@ -152,7 +152,7 @@ hook_add = '''
   nnoremap <silent><expr> tp  &filetype == 'help' ? "\<Cmd>pop\<CR>" : "\<Cmd>Denite jump\<CR>"
 
   nnoremap <silent> s<Space> <Cmd>Denite -buffer-name=files  file/rec:'`fnamemodify(expand('$MYVIMRC'), ':h').'/rc'`'<CR>
-  nnoremap <silent> n        <Cmd>Denite -buffer-name=search -resume<CR>
+  "nnoremap <silent> n        <Cmd>Denite -buffer-name=search -resume<CR>
   nnoremap <silent> sf       <Cmd>Denite -buffer-name=files -resume<CR>
   nnoremap <silent> sn       <Cmd>Denite dein<CR>
   nnoremap <silent> sg       <Cmd>Denite ghq -default-action=cd<CR>
