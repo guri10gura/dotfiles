@@ -124,6 +124,15 @@ on_cmd = 'Denite'
 hook_source = '''
   execute 'source' fnamemodify(expand('$MYVIMRC'), ':h').'/rc/plugins/denite.rc.vim'
 '''
+
+  # nnoremap <silent><expr> / wordcount().chars > 30000 ?
+  # \ "\<Cmd>Denite -buffer-name=search -start-filter
+  # \  -search line/external\<CR>" :
+  # \ "\<Cmd>Denite -buffer-name=search -start-filter -search line\<CR>"
+  # nnoremap <silent><expr> * wordcount().chars > 30000 ?
+  # \ "\<Cmd>DeniteCursorWord -buffer-name=search -search line/external\<CR>" :
+  # \ "\<Cmd>DeniteCursorWord -buffer-name=search -search line\<CR>"
+
 hook_add = '''
   nnoremap <silent> ;r
         \ <Cmd>Denite -buffer-name=register register<CR>
@@ -134,13 +143,6 @@ hook_add = '''
   nnoremap <silent> s<Space>
   \ <Cmd>Denite -buffer-name=files
   \  file/rec:'`fnamemodify(expand('$MYVIMRC'), ':h').'/rc'`'<CR>
-  nnoremap <silent><expr> / wordcount().chars > 30000 ?
-  \ "\<Cmd>Denite -buffer-name=search -start-filter
-  \  -search line/external\<CR>" :
-  \ "\<Cmd>Denite -buffer-name=search -start-filter -search line\<CR>"
-  nnoremap <silent><expr> * wordcount().chars > 30000 ?
-  \ "\<Cmd>DeniteCursorWord -buffer-name=search -search line/external\<CR>" :
-  \ "\<Cmd>DeniteCursorWord -buffer-name=search -search line\<CR>"
   xnoremap <silent> *
   \ "qy:Denite -input=`@q` -buffer-name=search -search line<CR>
   nnoremap <silent><expr> ss finddir('.git', ';') != '' ?
