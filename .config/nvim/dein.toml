@@ -126,14 +126,6 @@ on_cmd = 'Denite'
 #   execute 'source' fnamemodify(expand('$MYVIMRC'), ':h').'/rc/plugins/denite.rc.vim'
 # '''
 
-# nnoremap <silent><expr> / wordcount().chars > 30000 ?
-# \ "\<Cmd>Denite -buffer-name=search -start-filter
-# \  -search line/external\<CR>" :
-# \ "\<Cmd>Denite -buffer-name=search -start-filter -search line\<CR>"
-# nnoremap <silent><expr> * wordcount().chars > 30000 ?
-# \ "\<Cmd>DeniteCursorWord -buffer-name=search -search line/external\<CR>" :
-# \ "\<Cmd>DeniteCursorWord -buffer-name=search -search line\<CR>"
-
 hook_add = '''
   nnoremap <silent> ;r
         \ <Cmd>Denite -buffer-name=register register<CR>
@@ -151,13 +143,22 @@ hook_add = '''
   nnoremap <silent><expr> tt  &filetype == 'help' ? "g\<C-]>" : "\<Cmd>DeniteCursorWord -buffer-name=tag -immediately tag:include\<CR>"
   nnoremap <silent><expr> tp  &filetype == 'help' ? "\<Cmd>pop\<CR>" : "\<Cmd>Denite jump\<CR>"
 
+  nnoremap <silent><expr> ? wordcount().chars > 30000 ?
+  \ "\<Cmd>Denite -buffer-name=search -start-filter
+  \  -search line/external\<CR>" :
+  \ "\<Cmd>Denite -buffer-name=search -start-filter -search line\<CR>"
+  nnoremap <silent><expr> S wordcount().chars > 30000 ?
+  \ "\<Cmd>DeniteCursorWord -buffer-name=search -search line/external\<CR>" :
+  \ "\<Cmd>DeniteCursorWord -buffer-name=search -search line\<CR>"
   nnoremap <silent> s<Space> <Cmd>Denite -buffer-name=files  file/rec:'`fnamemodify(expand('$MYVIMRC'), ':h').'/rc'`'<CR>
-  "nnoremap <silent> n        <Cmd>Denite -buffer-name=search -resume<CR>
   nnoremap <silent> sf       <Cmd>Denite -buffer-name=files -resume<CR>
+  nnoremap <silent> ;f       <Cmd>Denite file_mru<CR>
+  nnoremap <silent> ;b       <Cmd>Denite buffer<CR>
   nnoremap <silent> sn       <Cmd>Denite dein<CR>
   nnoremap <silent> sg       <Cmd>Denite ghq -default-action=cd<CR>
   nnoremap <silent> ;g       <Cmd>Denite -buffer-name=search -no-empty grep<CR>
   nnoremap <silent> ;w       <Cmd>DeniteCursorWord -buffer-name=search -no-empty grep<CR>
+  nnoremap <silent> t        <Cmd>Denite -buffer-name=search -resume<CR>
   nnoremap <silent> <C-t>    <Cmd>Denite -buffer-name=deol
   \ -split=`has('nvim') ? 'floating' : 'horizontal'`
   \ -cursor-pos=`tabpagenr()-1` deol:zsh<CR>
@@ -191,10 +192,6 @@ let g:context_filetype#ignore_patterns = {
     \ }
 '''
 
-
-
-
-
 [[plugins]]
 repo = 'thinca/vim-visualstar'
 
@@ -224,3 +221,7 @@ hook_add = '''
   nmap <Space>M <Plug>(quickhl-manual-reset)
   xmap <Space>M <Plug>(quickhl-manual-reset)
 '''
+
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+
