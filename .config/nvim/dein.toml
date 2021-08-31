@@ -11,7 +11,7 @@ repo = 'Shougo/defx.nvim'
 hook_add = '''
   nnoremap <silent>   [Space]f
   \ <Cmd>Defx -listed -resume -buffer-name=win-`win_getid()`<CR>
-  nnoremap <silent> ;d :<C-u>Defx -split=vertical -winwidth=40 -search=`expand('%:p')` -direction=topleft `expand('%:p:h')`<CR>
+  nnoremap <silent> ;d :<C-u>Defx<CR>
 '''
 hook_source = '''
   call defx#custom#column('mark', {
