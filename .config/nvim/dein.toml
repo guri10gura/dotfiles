@@ -164,6 +164,14 @@ repo = 'thinca/vim-quickrun'
 
 [[plugins]]
 repo = 'Lokaltog/vim-easymotion'
+hook_source = '''
+  " ホームポジションに近いキーを使う
+  let g:EasyMotion_keys='hjklasdfgyuiopqwertnmzxcvbHJKLASDFGYUIOPQWERTNMZXCVB'
+  " 「'」 + 何かにマッピング
+  let g:EasyMotion_leader_key="<SPACE>"
+  " 1 ストローク選択を優先する
+  let g:EasyMotion_grouping=1
+'''
 
 [[plugins]]
 repo = 'plasticboy/vim-markdown'

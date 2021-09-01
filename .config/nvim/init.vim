@@ -42,4 +42,47 @@ if has('vim_starting') && dein#check_install()
 endif
 " }}}
 
+" Setting Key mapping
+nnoremap qqq: <Esc>q:
+nnoremap qqq/ <Esc>q/
+nnoremap qqq? <Esc>q?
 
+" Disable key ( q:, q/, q? )
+nnoremap q: <Nop>
+nnoremap q/ <Nop>
+nnoremap q? <Nop>
+
+" Change directory that file opend
+nnoremap <silent> <Space>cd :cd %:h<CR>
+
+
+nnoremap <silent> <Space>cp :CopyPath<CR>
+nnoremap <silent> <Space>cf :CopyFile<CR>
+
+" move to center, when input parenthesis
+inoremap {}<Space> {}<LEFT>
+inoremap []<Space> []<LEFT>
+inoremap ()<Space> ()<LEFT>
+inoremap ""<Space> ""<LEFT>
+inoremap ''<Space> ''<LEFT>
+inoremap ``<Space> ``<LEFT>
+inoremap <><Space> <><LEFT>
+
+" move cursor when it's insert mode
+inoremap <C-h> <Left>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-l> <Right>
+
+inoremap {}<Space><CR> {<CR>}<UP><CR>
+
+" move separator
+nnoremap <C-l> <C-w>><CR><UP>
+nnoremap <C-h> <C-w><<CR><UP>
+nnoremap <C-j> <C-w>-<CR><UP>
+nnoremap <C-k> <C-w>+<CR><UP>
+
+" ESCの連打で検索結果ハイライトをリセット
+nnoremap <ESC><ESC> :nohlsearch<CR>
+
+vnoremap <silent> <C-p> "0p
