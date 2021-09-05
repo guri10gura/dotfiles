@@ -115,3 +115,6 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+[[ -z "$TMUX" && ! -z "$PS1" ]] && tmux
+
