@@ -32,6 +32,7 @@ let s:toml_dir = expand('~/.config/nvim')
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
   call dein#load_toml(s:toml_dir . '/dein.toml', {'lazy': 0})
+  call dein#load_toml(s:toml_dir . '/deinlazy.toml', {'lazy': 1})
   call dein#end()
   call dein#save_state()
 endif
