@@ -87,3 +87,5 @@ nnoremap <C-k> <C-w>+<CR><UP>
 nnoremap <ESC><ESC> :nohlsearch<CR>
 
 vnoremap <silent> <C-p> "0p
+
+colorscheme solarized

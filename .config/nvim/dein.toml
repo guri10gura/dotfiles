@@ -50,3 +50,9 @@ hook_add = '''
   let g:EasyMotion_grouping=1
 '''
 
+[[plugins]]
+repo = 'altercation/vim-colors-solarized.git'
+hook_add = '''
+  let g:solarized_termtrans=1
+  call togglebg#map('<F3>')
+'''

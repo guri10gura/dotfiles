@@ -54,7 +54,7 @@ defx = '''
   nnoremap <silent><buffer><expr> S       defx#do_action('toggle_sort', 'Time')
 "  nnoremap <silent><buffer><expr> se      defx#do_action('add_session')
 "  nnoremap <silent><buffer><expr> sl      defx#do_action('load_session')
-"  nnoremap <silent><buffer><expr> d       defx#do_action('remove_trash')
+  nnoremap <silent><buffer><expr> d       defx#do_action('remove_trash')
   nnoremap <silent><buffer><expr> r       defx#do_action('rename')
 "  nnoremap <silent><buffer><expr> x       defx#do_action('execute_system')
   nnoremap <silent><buffer><expr> .       defx#do_action('toggle_ignored_files')
@@ -153,5 +153,4 @@ let g:context_filetype#ignore_patterns = {
     \ 'toml': ['^\s*#\s*'],
     \ }
 '''
-
 
