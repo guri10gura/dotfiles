@@ -88,5 +88,4 @@ nnoremap <ESC><ESC> :nohlsearch<CR>
 
 vnoremap <silent> <C-p> "0p
 
-colorscheme molokai
-
+colorscheme solarized

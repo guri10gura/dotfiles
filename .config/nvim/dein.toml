@@ -51,5 +51,8 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'tomasr/molokai'
-
+repo = 'altercation/vim-colors-solarized.git'
+hook_add = '''
+  let g:solarized_termtrans=1
+  call togglebg#map('<F3>')
+'''
