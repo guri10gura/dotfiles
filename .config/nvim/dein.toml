@@ -50,3 +50,6 @@ hook_add = '''
   let g:EasyMotion_grouping=1
 '''
 
+[[plugins]]
+repo = 'tomasr/molokai'
+
