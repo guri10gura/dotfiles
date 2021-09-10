@@ -1,4 +1,5 @@
 
+
 set number
 set autoindent
 set tabstop=2
@@ -89,3 +90,11 @@ nnoremap <ESC><ESC> :nohlsearch<CR>
 vnoremap <silent> <C-p> "0p
 
 colorscheme solarized
+
+
+let g:Gtags_Auto_Map = 1
+if filereadable(expand('/usr/share/vim/addons/plugin/gtags.vim'))
+  source /usr/share/vim/addons/plugin/gtags.vim
+endif
+
+

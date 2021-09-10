@@ -154,3 +154,6 @@ let g:context_filetype#ignore_patterns = {
     \ }
 '''
 
+[[plugins]]
+repo = 'tyru/capture.vim.git'
+
